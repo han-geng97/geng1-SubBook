@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,10 +38,14 @@ import java.util.Locale;
  * Created by geng1 on 2/1/18.
  */
 
-
+/**The main activity**/
 public class MainActivity extends AppCompatActivity {
 
     private ListView oldSubList;
+    private EditText bodyText;
+    private EditText date;
+    private EditText charge;
+    private EditText comments;
     private static final String FILENAME = "file.sav";
 
     private TextView totalNum;
@@ -48,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     private String tempDate;
     private String tempCharge;
     private String tempComment;
-
 
 
     private ArrayList<Subscription> subList;
@@ -65,9 +69,11 @@ public class MainActivity extends AppCompatActivity {
     protected static int RESULT_DELETE = 12;
 
 
-
     /////////////////
-    /** Called when the activity is first created. */
+
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -78,7 +84,74 @@ public class MainActivity extends AppCompatActivity {
         buttonAdd = findViewById( R.id.button );
         //buttonCancle = findViewById( R.id.buttonCancle );
         subList = new ArrayList<>();
+    }}
+        /**buttonAdd.setOnClickListener(new View.OnClickListener() {
+                                         public void onClick(View v) {
+                                             setResult( RESULT_OK );
+                                             String text = bodyText.getText().toString();
+                                             String text1 = date.getText().toString();
+                                             String text2 = charge.getText().toString();
+                                             String text3 = comments.getText().toString();
 
+                                             subList.add( new Subscription( text, text1, text2, text3 ) );
+                                             adapter.notifyDataSetChanged();
+                                             saveInFile();
+                                         }
+
+                                         @Override
+                                         protected void onStart() {
+                                             // TODO Auto-generated method stub
+                                             super.onStart();
+                                             loadFromFile();
+                                             adapter = new ArrayAdapter<>( this, R.layout.list_item, subList );
+                                             oldSubList.setAdapter( adapter );
+
+
+                                         }
+
+
+                                         private void loadFromFile() {
+                                             try {
+                                                 FileInputStream fis = openFileInput( FILENAME );
+                                                 BufferedReader in = new BufferedReader( new InputStreamReader( fis ) );
+
+                                                 Gson gson = new Gson();
+
+                                                 // Taken from https://stackoverflow.com/questions/12384064/gson-convert-from-json-to-a-typed-arraylistt
+                                                 // 2018-01-26
+                                                 Type listType = new TypeToken<ArrayList<Subscription>>() {
+                                                 }.getType();
+                                                 subList = gson.fromJson( in, listType );
+
+                                             } catch (FileNotFoundException e) {
+                                                 // TODO Auto-generated catch block
+                                                 subList = new ArrayList<>();
+                                             }
+                                         }
+
+                                         private void saveInFile() {
+                                             try {
+                                                 FileOutputStream fos = openFileOutput( FILENAME,
+                                                         Context.MODE_PRIVATE );
+                                                 BufferedWriter out = new BufferedWriter( new OutputStreamWriter( fos ) );
+                                                 Gson gson = new Gson();
+                                                 gson.toJson( subList, out );
+                                                 out.flush();
+                                             } catch (FileNotFoundException e) {
+                                                 // TODO Auto-generated catch block
+                                                 throw new RuntimeException();
+                                             } catch (IOException e) {
+                                                 // TODO Auto-generated catch block
+                                                 throw new RuntimeException();
+                                             }
+                                         }
+                                     }**/
+
+
+
+/** there is some problem with my code, it could not function properly so I commented them out **/
+
+/**
         buttonAdd.setOnClickListener( new View.OnClickListener() {
             public void onClick(View v) {
                 startActivityForResult( new Intent( MainActivity.this, EditSub.class ),
@@ -93,8 +166,10 @@ public class MainActivity extends AppCompatActivity {
                 String theDate = subList.get( x ).getDate();
                 String theCharge = subList.get( x ).getCharge();
                 String commentStr = subList.get( x ).getComment();
+**/
 
-                Intent intent = new Intent( MainActivity.this, EditSub.class );
+                /** storing the strings into bundle **/
+/**                Intent intent = new Intent( MainActivity.this, EditSub.class );
                 Bundle bundle = new Bundle();
                 bundle.putInt( "pos", x );
                 bundle.putString( "usage", usageStr );
@@ -213,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
-
+**/
 
 
 
