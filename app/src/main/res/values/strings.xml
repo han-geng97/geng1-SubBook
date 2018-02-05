@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">geng1-SubBook</string>
+    <string name="subscription_list">Subscription List</string>
+    <string name="button_add">ADD</string>
+    <string name="enter_usage">please enter a usage</string>
+    <string name="enter_date">yyyy-mm-dd</string>
+    <string name="enter_charge">(CA$)</string>
+    <string name="enter_comment">Optional</string>
+    <string name="total">Total amount:</string>
+    <string name="total_num">$ 0.00</string>
+    <string name="delete">delete</string>
+    <string name="dateError">Invalid date input</string>
+    <string name="chargeError">Invalid charge input</string>
+    <string name="usageError">Invalid usage input</string>
+    <string name="button_cancle">cancle</string>
+</resources>
